@@ -22,14 +22,20 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2 pt-4 pb-4"
-              >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
-              </Button>
+            <a
+        href="https://drive.google.com/drive/folders/1fshMQ30VgNcO7JISCpxaOR2R8DVvMUwV?usp=sharing" 
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button
+          variant="outline"
+          size="lg"
+          className="uppercase flex items-center gap-2 pt-4 pb-4"
+        >
+          <span>Download CV</span>
+          <FiDownload className="text-xl" />
+        </Button>
+      </a>
               <Social />
               
             </div>
