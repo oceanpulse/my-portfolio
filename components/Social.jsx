@@ -4,11 +4,11 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 const socials = [
   {
     icon: <FaGithub />,
-    path: ""
+    path: "https://github.com/oceanpulse"
   },
   {
     icon: <FaLinkedin />,
-    path: ""
+    path: "https://www.linkedin.com/in/clint-edward-cloete-685004108/"
   }
 ]
 
@@ -45,3 +45,7 @@ const Social = (containerStyles, iconStyles) => {
 }
 
 export default Social
+
+
+
+//https://github.com/oceanpulse
