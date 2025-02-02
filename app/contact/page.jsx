@@ -1,9 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
 import {
   Select,
   SelectContent,
@@ -13,9 +13,7 @@ import {
   SelectLabel,
   SelectGroup,
 } from "@/components/ui/select";
-
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-
 import { motion } from "framer-motion";
 
 const info = [
@@ -36,12 +34,51 @@ const info = [
   },
 ];
 
-const contact = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the page from reloading on form submission
+const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const [selectedService, setSelectedService] = useState('');
 
-    // Collect form data
-    console.log("Form submitted");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    const formData = {
+      firstname: e.target.firstname.value,
+      lastname: e.target.lastname.value,
+      email: e.target.email.value,
+      phone: e.target.phone.value,
+      service: selectedService,
+      message: e.target.message.value,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
+
+      setSuccess('Message sent successfully! We will get back to you soon.');
+      e.target.reset();
+      setSelectedService('');
+    } catch (err) {
+      setError('Failed to send message. Please try again later.');
+      console.error('Error:', err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,16 +104,27 @@ const contact = () => {
                 can make it happen!
               </p>
 
+              {error && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                  {error}
+                </div>
+              )}
+              {success && (
+                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                  {success}
+                </div>
+              )}
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="text" placeholder="Firstname" name="firstname" />
-                <Input type="text" placeholder="Lastname" name="lastname" />
-                <Input type="email" placeholder="Email address" name="email" />
-                <Input type="tel" placeholder="Phone number" name="phone" />
+                <Input type="text" placeholder="Firstname" name="firstname" required />
+                <Input type="text" placeholder="Lastname" name="lastname" required />
+                <Input type="email" placeholder="Email address" name="email" required />
+                <Input type="tel" placeholder="Phone number" name="phone" required />
               </div>
 
-              <Select>
+              <Select value={selectedService} onValueChange={setSelectedService} required>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service"></SelectValue>
+                  <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
@@ -92,10 +140,16 @@ const contact = () => {
                 className="h-[200px]"
                 placeholder="Type your message here."
                 name="message"
+                required
               />
 
-              <Button type="submit" size="md" className="max-w-40">
-                Send message
+              <Button 
+                type="submit" 
+                size="md" 
+                className="max-w-40"
+                disabled={loading}
+              >
+                {loading ? 'Sending...' : 'Send message'}
               </Button>
             </form>
           </div>
@@ -121,4 +175,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;
