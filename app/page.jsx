@@ -21,7 +21,7 @@ const Home = () => {
               proficient i various programming languages and technologies.
             </p>
 
-            <div className="flex flex-col xl:flex-row items-center gap-8">
+            <div className="flex flex-col xl:flex-row items-center gap-8 ">
             <a
         href="https://drive.google.com/drive/folders/1fshMQ30VgNcO7JISCpxaOR2R8DVvMUwV?usp=sharing" 
         target="_blank"

@@ -6,26 +6,26 @@ const services = [
   {
     num: '01',
     title: 'Web Development',
-    description: 'Lorem ipsum dolor nt ut labore et dolore magna aliqua.',
-    href: '/',
+    description: 'Custom web solutions built with modern technologies. From responsive websites to complex web applications, I create efficient, scalable, and user-friendly digital experiences that help businesses thrive online.',
+    href: '/contact',
   },
   {
     num: '02',
     title: 'UI/UX Development',
-    description: 'Lorem ipsum dolor nt ut labore et dolore magna aliqua.',
-    href: '/',
+    description: 'Creating intuitive and engaging user interfaces that combine aesthetic appeal with practical functionality. I focus on user-centered design principles to deliver seamless interactions and memorable experiences.',
+    href: '/contact',
   },
   {
     num: '03',
     title: 'Logo Design',
-    description: 'Lorem ipsum dolor nt ut labore et dolore magna aliqua.',
-    href: '/',
+    description: 'Crafting distinctive brand identities through creative logo design. I develop unique visual elements that capture your brands essence and leave a lasting impression on your target audience.',
+    href: '/contact',
   },
   {
     num: '04',
     title: 'Blockchain/Web3',
-    description: 'Lorem ipsum dolor nt ut labore et dolore magna aliqua.',
-    href: '/',
+    description: 'Building decentralized applications and smart contracts for the Web3 ecosystem. I help businesses integrate blockchain technology to create secure, transparent, and innovative solutions for the future of the internet.',
+    href: '/contact',
   },
   
 ]

@@ -33,7 +33,7 @@ const Social = (containerStyles, iconStyles) => {
             hover:bg-accent 
             hover:text-primary 
             hover:transition-all 
-            mb-6
+           
             duration-500${iconStyles}
           `}
         >
