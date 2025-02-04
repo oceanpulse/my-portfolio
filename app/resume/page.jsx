@@ -121,7 +121,7 @@ const education = {
 
 const skills = {
   title: 'My skills',
-  description: 'sklvlsfkjvfksldjvsdkl',
+  description: '',
   skillList: [
     {
       icon: <FaHtml5 />,
